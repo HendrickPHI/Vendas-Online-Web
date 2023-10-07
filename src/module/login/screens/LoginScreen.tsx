@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 
 import Button from '../../../shered/buttons/button/Button';
+import SVGHome from '../../../shered/icons/SVGHome';
 import Input from '../../../shered/inputs/input/Input';
 import {
   BackgroundImage,

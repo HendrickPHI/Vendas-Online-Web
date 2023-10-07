@@ -31,7 +31,7 @@ export const ContainerLogin = styled.div`
   display: flex;
   aling-items: center;
   justify-content: center;
-  background-color: #06d2d2;
+  background-color: #d9d9d9;
   padding: 24px;
   width: 100%;
   height: 90vh;
