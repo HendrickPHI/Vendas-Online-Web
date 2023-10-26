@@ -1,53 +1,44 @@
-import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import Button from '../../../shered/buttons/button/Button';
-import SVGHome from '../../../shered/icons/SVGHome';
-import Input from '../../../shered/inputs/input/Input';
+import Button from '../../../shered/components/buttons/button/Button';
+import SVGLogo from '../../../shered/components/icons/SVGLogo';
+import Input from '../../../shered/components/inputs/input/Input';
+import { useRequests } from '../../../shered/hooks/useRequests';
 import {
   BackgroundImage,
   ContainerLogin,
   ContainerLoginScreen,
   LimitedContainer,
-  LogoImage,
   TitleLogin,
 } from '../styles/loginScreen.style';
 
 const LoginScreen = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { authRequest, loading } = useRequests();
 
   const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value + '');
+    setEmail(event.target.value);
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value + '');
+    setPassword(event.target.value);
   };
 
-  const handleLogin = async () => {
-    await axios({
-      method: 'post',
-      url: 'http://localhost:8080/auth',
-      data: {
-        email: email,
-        password: password,
-      },
-    })
-      .then((result) => {
-        alert(`Login feito ${result.data.accessToken}`);
-        return result.data;
-      })
-      .catch(() => {
-        alert('Usuario ou senha invalido');
-      });
+  const handleLogin = () => {
+    authRequest(navigate, {
+      email: email,
+      password: password,
+    });
   };
 
   return (
     <ContainerLoginScreen>
       <ContainerLogin>
         <LimitedContainer>
-          <LogoImage src="./login.png" />
+          <SVGLogo />
           <TitleLogin level={2} type="secondary">
             LOGIN
           </TitleLogin>
@@ -59,8 +50,14 @@ const LoginScreen = () => {
             onChange={handlePassword}
             value={password}
           />
-          <Button type="primary" margin="60px 0px 16px 0px" onClick={handleLogin}>
+          <Button loading={loading} type="primary" margin="60px 0px 16px 0px" onClick={handleLogin}>
             ENTRAR
+          </Button>
+
+          <a href="/user">Esqueceu a senha?</a>
+
+          <Button href="/user/insert" margin="40px 0px 16px 0px">
+            Criar nova conta
           </Button>
         </LimitedContainer>
       </ContainerLogin>

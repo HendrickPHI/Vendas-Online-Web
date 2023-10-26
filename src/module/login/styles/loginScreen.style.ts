@@ -1,7 +1,7 @@
-import { Space, Typography } from 'antd';
+import { Typography } from 'antd';
 import styled from 'styled-components';
 
-const { Text, Title } = Typography;
+const { Title } = Typography;
 
 export const ContainerLoginScreen = styled.div`
   width: 100%;
@@ -32,9 +32,9 @@ export const ContainerLogin = styled.div`
   aling-items: center;
   justify-content: center;
   background-color: #d9d9d9;
-  padding: 24px;
+  padding: 26px;
   width: 100%;
-  height: 90vh;
+  height: 92vh;
   max-width: 648px;
 `;
 
