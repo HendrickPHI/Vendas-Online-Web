@@ -1,4 +1,5 @@
 export const URL_USER = 'http://localhost:8080/user';
+export const URL_USER_ADM = 'http://localhost:8080/admin';
 export const URL_USER_ID = 'http://localhost:8080/user/{userId}';
 export const URL_USER_ALL = 'http://localhost:8080/user/all';
 

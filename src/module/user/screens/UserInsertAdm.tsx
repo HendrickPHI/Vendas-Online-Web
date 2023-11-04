@@ -6,12 +6,12 @@ import {
   DisplayFlexJustifyRight,
 } from '../../../shered/components/styles/display.styled';
 import { LimitedContainer } from '../../../shered/components/styles/limited.styled';
-import { useUserInsert } from '../hooks/useUserInsert';
+import { useUserInsertAdm } from '../hooks/useUserInsertAdm';
 import { UserRoutesEnum } from '../routes';
 
-const UserInsert = () => {
-  const { user, disabledButton, handleCancelInsert, handleInsertUser, handleOnChangeInput } =
-    useUserInsert();
+const UserInsertAdm = () => {
+  const { userAdm, disabledButton, handleCancelInsert, handleInsertUserAdm, handleOnChangeInput } =
+    useUserInsertAdm();
 
   return (
     <Screen
@@ -21,7 +21,7 @@ const UserInsert = () => {
         },
         {
           name: 'USUÁRIOS',
-          navigateTo: UserRoutesEnum.USER,
+          navigateTo: UserRoutesEnum.USER_ADM,
         },
         {
           name: 'INSERIR',
@@ -31,35 +31,35 @@ const UserInsert = () => {
       <DisplayFlexJustifyCenter>
         <LimitedContainer width={400}>
           <Input
-            value={user.name}
+            value={userAdm.name}
             onChange={(event) => handleOnChangeInput(event, 'name')}
             margin="0px 0px 16px 0px"
             title="Nome"
             placeholder="Nome"
           />
           <Input
-            value={user.phone}
+            value={userAdm.phone}
             onChange={(event) => handleOnChangeInput(event, 'phone')}
             margin="0px 0px 16px 0px"
             title="Telefone"
             placeholder="Telefone"
           />
           <Input
-            value={user.email}
+            value={userAdm.email}
             onChange={(event) => handleOnChangeInput(event, 'email')}
             margin="0px 0px 16px 0px"
             title="Email"
             placeholder="Email"
           />
           <Input
-            value={user.cpf}
+            value={userAdm.cpf}
             onChange={(event) => handleOnChangeInput(event, 'cpf')}
             margin="0px 0px 16px 0px"
             title="CPF"
             placeholder="CPF"
           />
           <Input
-            value={user.password}
+            value={userAdm.password}
             onChange={(event) => handleOnChangeInput(event, 'password')}
             margin="0px 0px 16px 0px"
             title="Senha"
@@ -73,8 +73,8 @@ const UserInsert = () => {
               </Button>
             </LimitedContainer>
             <LimitedContainer width={120}>
-              <Button disabled={disabledButton} onClick={handleInsertUser} type="primary">
-                Inserir Usuario
+              <Button disabled={disabledButton} onClick={handleInsertUserAdm} type="primary">
+                Inserir Admin
               </Button>
             </LimitedContainer>
           </DisplayFlexJustifyRight>
@@ -84,4 +84,4 @@ const UserInsert = () => {
   );
 };
 
-export default UserInsert;
+export default UserInsertAdm;

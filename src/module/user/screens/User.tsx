@@ -53,6 +53,12 @@ const columns: ColumnsType<UserType> = [
     key: 'cpf',
     render: (text) => <a>{insertMaskInCpf(text)}</a>,
   },
+  {
+    title: 'Tipo',
+    dataIndex: 'tipo',
+    key: 'tipo',
+    render: (typeUser) => <a>{typeUser}</a>,
+  },
 ];
 
 const User = () => {
@@ -62,7 +68,7 @@ const User = () => {
   const userToken = useMemo(() => getUserInfoByToken(), []);
 
   const handleGoToInsertAdmin = () => {
-    navigate(UserRoutesEnum.USER_INSERT);
+    navigate(UserRoutesEnum.USER_ADM);
   };
 
   return (
